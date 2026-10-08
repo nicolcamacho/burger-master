@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Master POS</title>
+    <!-- Fuentes modernas de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Encabezado con imagen de fondo profesional -->
+    <header class="hero-header">
+        <div class="overlay"></div>
+        <div class="header-content">
+            <span class="badge">🔥 Las mejores de la ciudad</span>
+            <h1>BURGER MASTER</h1>
+            <p>Sabor artesanal, ingredientes frescos y entrega rápida a tu mesa.</p>
+            <a href="#modulo-pedidos" class="btn-hero">🚀 Iniciar Pedido</a>
+        </div>
+    </header>
+
+    <!-- Navegación interna de la App -->
+    <nav class="nav-tabs">
+        <div class="container nav-container">
+            <button class="nav-btn active" id="btn-tab-menu" onclick="cambiarPestana('menu')">🍔 Menú / Registrar Pedido</button>
+            <button class="nav-btn" id="btn-tab-ventas" onclick="cambiarPestana('ventas')">📊 Registro de Ventas</button>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container main-content">
+
+        <!-- SECCIÓN 1: MENÚ Y CARRITO -->
+        <section id="seccion-menu" class="grid-layout">
+            <div class="catalog-container">
+                <div class="section-title">
+                    <h2>Nuestros Productos</h2>
+                    <p>Selecciona tus hamburguesas y acompañamientos preferidos</p>
+                </div>
+                <div id="menu-container" class="menu-grid">
+                    <!-- Cargado dinámicamente con JS desde MySQL -->
+                </div>
+            </div>
+
+            <!-- Panel interactivo del carrito -->
+            <aside class="carrito-panel" id="modulo-pedidos">
+                <div class="panel-header">
+                    <h3>🛒 Pedido Actual</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="cliente-nombre">Cliente o Número de Mesa:</label>
+                        <input type="text" id="cliente-nombre" placeholder="Ej: Mesa 4 / Carlos Pérez">
+                    </div>
+
+                    <div class="cart-items-wrapper">
+                        <ul id="carrito-lista" class="carrito-lista">
+                            <li class="empty-cart">No hay productos seleccionados.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cart-summary">
+                        <div class="total-row">
+                            <span>Total a Pagar:</span>
+                            <strong id="carrito-total">$0</strong>
+                        </div>
+                        <button class="btn-comprar" onclick="enviarPedido()">🔥 Confirmar y Procesar Pedido</button>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- SECCIÓN 2: REGISTRO HISTÓRICO DE VENTAS -->
+        <section id="seccion-ventas" class="ventas-container" style="display: none;">
+            <div class="section-title">
+                <h2>Historial de Ventas</h2>
+                <p>Monitorea los pedidos registrados en tiempo real</p>
+            </div>
+
+            <div class="kpi-cards">
+                <div class="kpi-card">
+                    <span class="kpi-label">Ventas Totales</span>
+                    <h3 id="kpi-total-ventas">$0</h3>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-label">Pedidos Realizados</span>
+                    <h3 id="kpi-cantidad-pedidos">0</h3>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="ventas-tabla">
+                    <thead>
+                        <tr>
+                            <th># ID</th>
+                            <th>Cliente / Mesa</th>
+                            <th>Total</th>
+                            <th>Fecha y Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-ventas-body">
+                        <!-- Cargado dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Burger Master POS - Sistema de Gestión de Restaurante</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
